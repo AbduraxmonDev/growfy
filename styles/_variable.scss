@@ -9,7 +9,7 @@ $fontSize20: 20px;
 $fontSize22: 22px;
 $fontSize24: 24px;
 $titleSize51: 51px;
-$rirleSize32: 32px;
+$titleSize32: 32px;
 
 // colors
 $white: #ffffff;
@@ -20,6 +20,7 @@ $blue: #3d96f4;
 $blackBg: #0d0d11;
 $grayBg: rgba(129, 129, 139, 0.302);
 $blueBg: #3d96f4;
+$blueBgHover: #5aa5f5;
 $lightBlueBg: #0089ff;
 $lightYellowBg: #ff6f35;
 $lightGreenBg: #5cc97b;
@@ -36,3 +37,6 @@ $borderRad68: 68px;
 $borderRad241: 241px;
 $borderRad181: 181px;
 $borderRad378: 378px;
+
+// transition
+$transition: 0.4s;

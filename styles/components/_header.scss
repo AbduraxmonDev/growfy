@@ -1,0 +1,67 @@
+.header {
+  background: $blackBg;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0px 0px 10px 0px $grayBg;
+  &__container {
+    @include flex();
+    padding-block: 12px;
+  }
+  &__right {
+    @include flex();
+  }
+  &__navbar {
+    @include flex();
+    gap: 35px;
+    margin-right: 27px;
+  }
+  &__cart {
+    margin-right: 32px;
+  }
+  &__btn {
+    padding: 16px 30px;
+    background: $blueBg;
+    border-radius: $borderRad50;
+    transition: $transition;
+    &:hover {
+      background-color: $blueBgHover;
+    }
+  }
+  &__menu-btn {
+    display: none;
+  }
+}
+
+.navbar {
+  &__link {
+    font-size: $fontSize16;
+    box-shadow: inset 0 0 0 0 $blueBg;
+    transition: $transition;
+    border-radius: $borderRad50;
+    padding: 10px;
+    &:hover {
+      box-shadow: inset 100px 0 0 0 $blueBg;
+    }
+  }
+}
+.cart {
+  box-shadow: inset 0 0 0 0 $blueBg;
+  transition: $transition;
+  border-radius: $borderRad50;
+  padding: 10px;
+  &:hover {
+    box-shadow: inset 100px 0 0 0 $blueBg;
+    .cart__span {
+      opacity: 1;
+    }
+  }
+
+  &__span {
+    margin-left: 5px;
+    font-size: $fontSize14;
+    padding: 5px 10px;
+    background: $grayBg;
+    border-radius: $borderRad30;
+  }
+}
