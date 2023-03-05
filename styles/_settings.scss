@@ -1,6 +1,9 @@
 body {
   background-color: $blackBg;
   color: $white;
+  &.hide {
+    overflow: hidden;
+  }
 }
 
 .container {

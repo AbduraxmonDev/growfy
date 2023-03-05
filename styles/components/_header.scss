@@ -7,17 +7,40 @@
   &__container {
     @include flex();
     padding-block: 12px;
+    position: relative;
   }
   &__right {
     @include flex();
+    @media screen and (max-width: 840px) {
+      position: absolute;
+      align-items: flex-start;
+      justify-content: normal;
+      flex-direction: column;
+      overflow: auto;
+      background: $blackBg;
+      width: 80%;
+      height: 100vh;
+      padding: 80px 20px 40px 30px;
+      gap: 30px;
+      top: -20px;
+      left: -120%;
+      transition: $transition;
+      box-shadow: 0px 0px 10px 0px $grayBg;
+      &.show {
+        left: -20px;
+      }
+    }
   }
   &__navbar {
     @include flex();
-    gap: 35px;
-    margin-right: 27px;
+    @include adaptive-value(gap, 36, 15, 1);
+    @include adaptive-value(margin-right, 27, 15, 1);
+    @media screen and (max-width: 840px) {
+      flex-direction: column;
+    }
   }
   &__cart {
-    margin-right: 32px;
+    @include adaptive-value(margin-right, 32, 15, 1);
   }
   &__btn {
     padding: 16px 30px;
@@ -30,6 +53,54 @@
   }
   &__menu-btn {
     display: none;
+    @media screen and (max-width: 840px) {
+      display: block;
+      width: 35px;
+      height: 35px;
+      //   background-color: indigo;
+      position: relative;
+      cursor: pointer;
+      .btn__item {
+        width: 25px;
+        height: 3px;
+        position: absolute;
+        right: 5px;
+        top: 8px;
+        background: $blueBg;
+        border-radius: $borderRad10;
+        transition: $transition;
+
+        &:nth-child(2) {
+          top: 16px;
+          width: 20px;
+          background: $lightYellowBg;
+        }
+        &:nth-child(3) {
+          top: unset;
+          bottom: 7px;
+          width: 15px;
+          background: $lightGreenBg;
+        }
+      }
+    }
+    &.open {
+      .btn__item {
+        &:nth-child(1) {
+          top: 16px;
+          transform: rotate(45deg);
+          background: $white;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg) !important;
+          bottom: 16px;
+          width: 25px;
+          background: $white;
+        }
+      }
+    }
   }
 }
 
