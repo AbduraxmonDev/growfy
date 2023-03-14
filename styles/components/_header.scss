@@ -1,138 +1,194 @@
 .header {
-  background: $blackBg;
-  top: 0;
   position: fixed;
   width: 100%;
-  box-shadow: 0px 0px 10px 0px $grayBg;
+  background: $blackBg;
+  box-shadow: 0px 0px 6px 0px $grayBg;
   &__container {
     @include flex();
-    padding-block: 12px;
-    position: relative;
+    min-height: 70px;
+    padding-block: 10px;
   }
-  &__right {
-    @include flex();
-    @media screen and (max-width: 840px) {
-      position: absolute;
-      align-items: flex-start;
-      justify-content: normal;
-      flex-direction: column;
-      overflow: auto;
-      background: $blackBg;
-      width: 80%;
-      height: 100vh;
-      padding: 80px 20px 40px 30px;
-      gap: 30px;
-      top: -20px;
-      left: -120%;
-      transition: $transition;
-      box-shadow: 0px 0px 10px 0px $grayBg;
-      &.show {
-        left: -20px;
-      }
-    }
-  }
-  &__navbar {
-    @include flex();
-    @include adaptive-value(gap, 36, 15, 1);
+  &__menu {
+    flex: 1 1 auto;
     @include adaptive-value(margin-right, 27, 15, 1);
-    @media screen and (max-width: 840px) {
-      flex-direction: column;
-    }
   }
   &__cart {
-    @include adaptive-value(margin-right, 32, 15, 1);
-  }
-  &__btn {
-    padding: 16px 30px;
-    background: $blueBg;
-    border-radius: $borderRad50;
+    @include adaptive-value(margin-right, 27, 15, 1);
+    @include adaptive-value(font-size, 16, 12, 1);
     transition: $transition;
     &:hover {
-      background-color: $blueBgHover;
+      color: $blue;
     }
   }
-  &__menu-btn {
-    display: none;
-    @media screen and (max-width: 840px) {
-      display: block;
-      width: 35px;
-      height: 35px;
-      //   background-color: indigo;
-      position: relative;
-      cursor: pointer;
-      .btn__item {
-        width: 25px;
-        height: 3px;
-        position: absolute;
-        right: 5px;
-        top: 8px;
-        background: $blueBg;
-        border-radius: $borderRad10;
-        transition: $transition;
+  &__cart-number {
+    @include adaptive-value(font-size, 14, 12, 1);
+    background: $grayBg;
+    @include adaptive-value(padding-block, 5, 1, 1);
+    @include adaptive-value(padding-inline, 10, 5, 1);
+    margin-left: 5px;
+    border-radius: $borderRad30;
+  }
+  &__btn {
+    @include adaptive-value(padding-block, 16, 2, 1);
+    @include adaptive-value(padding-inline, 30, 4, 1);
+    @include adaptive-value(font-size, 16, 11, 1);
 
+    border: 2px solid $blueBg;
+    border-radius: $borderRad50;
+    background: $blueBg;
+    transition: $transition;
+    &:hover {
+      background: transparent;
+      color: $blue;
+    }
+  }
+
+  &__burger {
+    @include adaptive-value(width, 35, 25, 1);
+    @include adaptive-value(height, 35, 25, 1);
+    border: 1px solid transparent;
+    background: transparent;
+    margin-left: 10px;
+    position: relative;
+
+    z-index: 999;
+    transition: $transition;
+    display: none;
+    span {
+      position: absolute;
+      border: 1px solid transparent;
+      border-radius: 25px;
+      height: 3px;
+      @include adaptive-value(right, 3, 0, 1);
+      transition: $transition;
+      &:nth-child(1) {
+        @include adaptive-value(width, 28, 22, 1);
+        top: 0px;
+        background: $lightBlueBg;
+      }
+      &:nth-child(2) {
+        @include adaptive-value(width, 22, 16, 1);
+        top: 10px;
+        background: $lightOrangeBg;
+      }
+      &:nth-child(3) {
+        @include adaptive-value(width, 16, 10, 1);
+        top: 20px;
+        background: $lightGreenBg;
+      }
+    }
+
+    &:hover {
+      span {
+        background: transparent;
+        &:nth-child(1) {
+          border-color: $lightBlueBg;
+        }
         &:nth-child(2) {
-          top: 16px;
-          width: 20px;
-          background: $lightYellowBg;
+          border-color: $lightOrangeBg;
         }
         &:nth-child(3) {
-          top: unset;
-          bottom: 7px;
-          width: 15px;
-          background: $lightGreenBg;
+          border-color: $lightGreenBg;
         }
       }
     }
+
     &.open {
-      .btn__item {
+      span {
         &:nth-child(1) {
-          top: 16px;
-          transform: rotate(45deg);
-          background: $white;
+          top: 12px;
+          transform: rotate(-45deg);
         }
         &:nth-child(2) {
           opacity: 0;
         }
         &:nth-child(3) {
-          transform: rotate(-45deg) !important;
-          bottom: 16px;
-          width: 25px;
-          background: $white;
+          top: 12px;
+          transform: rotate(45deg);
+          @include adaptive-value(width, 28, 22, 1);
         }
+      }
+    }
+    @media screen and (max-width: 610px) {
+      display: block;
+    }
+  }
+}
+.menu {
+  &__list {
+    @include flex(center, flex-end);
+    @include adaptive-value(gap, 36, 15, 3);
+    @media screen and (max-width: 610px) {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: absolute;
+      background: $blackBg;
+      width: 100%;
+      height: 200vh;
+      overflow: auto;
+      top: 0;
+      left: -100%;
+      padding: 60px 0 30px 30px;
+      transition: $transition;
+      &.open {
+        left: 0;
+      }
+    }
+  }
+  &__link {
+    @include adaptive-value(font-size, 16, 14, 1);
+    line-height: 26px;
+    transition: $transition;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      width: 0%;
+      height: 2px;
+      bottom: -3px;
+      background: $blue;
+      margin: 0 auto;
+      transition: $transition;
+      left: 0%;
+      right: 0%;
+    }
+
+    &:hover {
+      color: $blue;
+      &::after {
+        width: 100%;
       }
     }
   }
 }
 
-.navbar {
-  &__link {
-    font-size: $fontSize16;
-    box-shadow: inset 0 0 0 0 $blueBg;
+.logo {
+  &__image {
+    @include adaptive-value(width, 137, 80, 1);
     transition: $transition;
-    border-radius: $borderRad50;
-    padding: 10px;
-    &:hover {
-      box-shadow: inset 100px 0 0 0 $blueBg;
+    path {
+      transition: $transition;
+      stroke: transparent;
     }
-  }
-}
-.cart {
-  box-shadow: inset 0 0 0 0 $blueBg;
-  transition: $transition;
-  border-radius: $borderRad50;
-  padding: 10px;
-  &:hover {
-    box-shadow: inset 100px 0 0 0 $blueBg;
-    .cart__span {
-      opacity: 1;
-    }
-  }
 
-  &__span {
-    margin-left: 5px;
-    font-size: $fontSize14;
-    padding: 5px 10px;
-    background: $grayBg;
-    border-radius: $borderRad30;
+    &:hover {
+      path:nth-child(1) {
+        fill: transparent;
+        stroke: $lightBlueBg;
+      }
+      path:nth-child(2) {
+        fill: transparent;
+        stroke: $lightYellowBg;
+      }
+      path:nth-child(3) {
+        fill: transparent;
+        stroke: $lightGreenBg;
+      }
+      path:nth-child(4) {
+        fill: transparent;
+        stroke: $lightBlueBg;
+      }
+    }
   }
 }

@@ -3,6 +3,7 @@
   align-items: $alignItem;
   justify-content: $justifyContent;
 }
+
 $maxWidth: 1920;
 $maxWidthContainer: 1320;
 @mixin adaptive-value($property, $startSize, $minSize, $type) {

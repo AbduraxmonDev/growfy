@@ -1,14 +1,26 @@
 body {
   background-color: $blackBg;
   color: $white;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+  min-height: 100px;
   &.hide {
     overflow: hidden;
   }
 }
 
-.container {
+.wrapper {
+  min-height: 100%;
+  overflow: clip;
+}
+
+[class*="__container"] {
   max-width: 1320px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
+}
+
+.page {
+  flex: 1 1 auto;
 }

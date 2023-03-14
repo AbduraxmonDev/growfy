@@ -1,33 +1,16 @@
-const btn = document.querySelector("#burger");
-const menu = document.querySelector("#menu");
-const body = document.querySelector("#body");
-const links = document.querySelectorAll(".navbar__link");
-const cart = document.querySelector(".cart");
-const getStartedbtn = document.querySelector(".header__btn");
-
-btn.addEventListener("click", function () {
-  btn.classList.toggle("open");
-  menu.classList.toggle("show");
-  body.classList.toggle("hide");
+let menuBtn = document.querySelector(".header__burger");
+let nav = document.querySelector(".menu__list");
+let links = document.querySelectorAll(".menu__link");
+menuBtn.addEventListener("click", function () {
+  menuBtn.classList.toggle("open");
+  nav.classList.toggle("open");
 });
 
-for (let link of links) {
-  console.log(link);
-  link.addEventListener("click", function () {
-    btn.classList.remove("open");
-    menu.classList.remove("show");
-    body.classList.remove("hide");
+if (window.innerWidth <= 610) {
+  links.forEach((link) => {
+    link.addEventListener("click", function () {
+      menuBtn.classList.toggle("open");
+      nav.classList.toggle("open");
+    });
   });
 }
-
-cart.addEventListener("click", function () {
-  btn.classList.remove("open");
-  menu.classList.remove("show");
-  body.classList.remove("hide");
-});
-
-getStartedbtn.addEventListener("click", function () {
-  btn.classList.remove("open");
-  menu.classList.remove("show");
-  body.classList.remove("hide");
-});
